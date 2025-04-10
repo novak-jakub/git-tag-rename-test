@@ -23,6 +23,9 @@ jobs:
         run: |
           for tag in $(git tag -l); do
             echo "Processing tag: $tag"
-            git tag release/datsch/1.0.0 datsch-1.0.0
-            git push origin release/datsch/1.0.0 :datsch-1.0.0
+            # git tag release/datsch/1.0.5 datsch-1.0.5
+            # git push origin release/datsch/1.0.5 :datsch-1.0.5
           done
+
+          git tag release/datsch/1.0.5 datsch-1.0.5
+          git push origin release/datsch/1.0.5 :datsch-1.0.5
