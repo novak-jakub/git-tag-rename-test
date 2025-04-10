@@ -10,6 +10,7 @@ jobs:
 
       - name: Rename tags
         run: |
+          git tag -l
           for tag in $(git tag -l); do
             echo "Processing tag: $tag"
           done
