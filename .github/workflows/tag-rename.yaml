@@ -9,6 +9,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Rename tags
+        shell: bash
         run: |
           git tag -l
           for tag in $(git tag -l); do
