@@ -1,0 +1,16 @@
+on: workflow_dispatch
+
+jobs:
+  rename:
+    name: Commit Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Rename tags
+        run: |
+          git tag -l
+          while IFS= read -r tag; do
+            echo $tag
+          done < <(eval $(git tag -l))
