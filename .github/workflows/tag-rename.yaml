@@ -10,7 +10,6 @@ jobs:
 
       - name: Rename tags
         run: |
-          git tag -l
-          while IFS= read -r tag; do
-            echo $tag
-          done < <(eval $(git tag -l))
+          for tag in $(git tag -l); do
+            echo "Processing tag: $tag"
+          done
