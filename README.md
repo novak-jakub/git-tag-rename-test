@@ -9,3 +9,6 @@ readme
 ### commit 3
 - podatelna-spis-1.0.0
 - podatelna-spis-fe-1.1.1
+### commit 4
+- hybpost-1.0.1
+- shell-fe-1.2.0

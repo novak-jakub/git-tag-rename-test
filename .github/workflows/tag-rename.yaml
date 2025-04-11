@@ -27,9 +27,3 @@ jobs:
             # git tag release/datsch/1.0.5 datsch-1.0.5
             # git push origin release/datsch/1.0.5 :datsch-1.0.5
           done
-
-          git tag release/datsch/be/1.0.5 release/datsch/1.0.5
-          git push origin release/datsch/be/1.0.5 :release/datsch/1.0.5
-
-          git tag release/datsch/be/1.0.0 release/datsch/1.0.0
-          git push origin release/datsch/be/1.0.0 :release/datsch/1.0.0
