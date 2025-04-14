@@ -21,7 +21,7 @@ jobs:
       - name: Rename tags
         shell: bash
         run: |
-          ech "*************BEFORE*************"
+          echo "*************BEFORE*************"
           git tag -l
 
           for tag in $(git tag -l); do
