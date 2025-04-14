@@ -40,12 +40,15 @@ jobs:
                 APP_NAME="$APP_NAME_FULL"
                 TYPE=be
               fi;
+
+              OLD_TAG="$APP_NAME_FULL-$APP_VERSION"
+              NEW_TAG="release/$APP_NAME/$TYPE/$APP_VERSION"
+
+              echo "[debug] taging $OLD_TAG to $NEW_TAG"
+              git tag $NEW_TAG $OLD_TAG
               
-              echo "[debug] taging $APP_NAME_FULL-$APP_VERSION to release/$APP_NAME/$TYPE/$APP_VERSION"
-              git tag release/$APP_NAME/$TYPE/$APP_VERSION $APP_NAME_FULL-$APP_VERSION
-              
-              # git tag release/datsch/1.0.5 datsch-1.0.5
-              # git push origin release/datsch/1.0.5 :datsch-1.0.5
+              echo "[debug] rewriting in remote repo"
+              git push origin $NEW_TAG :$OLD_TAG
             fi;
           done
 
