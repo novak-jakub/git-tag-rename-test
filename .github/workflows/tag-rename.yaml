@@ -28,16 +28,21 @@ jobs:
             echo "Processing tag: $tag"
 
             if [[ "$tag" =~ ^(.*)-([0-9]+\.[0-9]+\.[0-9]+)$ ]]; then
-              APP_NAME="${BASH_REMATCH[1]}"
+              APP_NAME_FULL="${BASH_REMATCH[1]}"
               APP_VERSION="${BASH_REMATCH[2]}"
-              TYPE=be
-
-              if [[ "$APP_NAME" =~ ^(.*)-fe$ ]]; then
+              
+              TYPE=""
+              APP_NAME=""
+              if [[ "$APP_NAME_FULL" =~ ^(.*)-fe$ ]]; then
                 APP_NAME="${BASH_REMATCH[1]}"
                 TYPE=fe
+              else
+                APP_NAME="$APP_NAME_FULL"
+                TYPE=be
               fi;
-
-              git tag release/$APP_NAME/$TYPE/$APP_VERSION $APP_NAME-$APP_VERSION
+              
+              echo "[debug] taging $APP_NAME_FULL-$APP_VERSION to release/$APP_NAME/$TYPE/$APP_VERSION"
+              git tag release/$APP_NAME/$TYPE/$APP_VERSION $APP_NAME_FULL-$APP_VERSION
               
               # git tag release/datsch/1.0.5 datsch-1.0.5
               # git push origin release/datsch/1.0.5 :datsch-1.0.5
