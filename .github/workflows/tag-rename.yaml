@@ -21,9 +21,27 @@ jobs:
       - name: Rename tags
         shell: bash
         run: |
+          ech "*************BEFORE*************"
+          git tag -l
+
           for tag in $(git tag -l); do
-            
             echo "Processing tag: $tag"
-            # git tag release/datsch/1.0.5 datsch-1.0.5
-            # git push origin release/datsch/1.0.5 :datsch-1.0.5
+
+            if [[ "$tag" =~ ^(.*)-([0-9]+\.[0-9]+\.[0-9]+)$ ]]; then
+              APP_NAME="${BASH_REMATCH[1]}"
+              APP_VERSION="${BASH_REMATCH[2]}"
+              TYPE=be
+
+              if [[ "$APP_NAME" =~ ^(.*)-fe$ ]]; then
+                APP_NAME="${BASH_REMATCH[1]}"
+                TYPE=fe
+              fi;
+
+              git tag release/$APP_NAME/$TYPE/$APP_VERSION $APP_NAME-$APP_VERSION
+              
+              # git tag release/datsch/1.0.5 datsch-1.0.5
+              # git push origin release/datsch/1.0.5 :datsch-1.0.5
           done
+
+          echo "*************AFTER*************"
+          git tag -l
