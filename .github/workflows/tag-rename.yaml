@@ -41,6 +41,7 @@ jobs:
               
               # git tag release/datsch/1.0.5 datsch-1.0.5
               # git push origin release/datsch/1.0.5 :datsch-1.0.5
+            fi;
           done
 
           echo "*************AFTER*************"
