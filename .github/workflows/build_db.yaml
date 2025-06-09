@@ -1,0 +1,16 @@
+on:
+  push:
+    tags:
+      - 'release/db/**'
+
+jobs:
+  rename:
+    name: Commit Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run git tag action
+        run: |
+          echo "running db action on tag: ${{ github.ref }}"
