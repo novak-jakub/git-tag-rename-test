@@ -1,7 +1,10 @@
 on:
   push:
     tags:
-      - '**'
+      - 'release/be/**'
+      - 'release/fe/**'
+      - 'alpha/be/**'
+      - 'alpha/fe/**'
 
 jobs:
   rename:
