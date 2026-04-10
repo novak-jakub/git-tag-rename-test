@@ -1,10 +1,8 @@
 on:
   push:
     tags:
-      - 'release/be/**'
-      - 'release/fe/**'
-      - 'alpha/be/**'
-      - 'alpha/fe/**'
+      - 'release/*/*/[0-9]*.[0-9]*.[0-9]*'
+      - 'alpha/*/*/[0-9]*.[0-9]*.[0-9]*-*'
 
 jobs:
   rename:
