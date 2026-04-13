@@ -15,8 +15,12 @@ jobs:
         run: |
           echo "running action on tag: ${{ github.ref }}"
           [[ "${{ github.ref_name }}" =~ ^sz/(.*)/db/(.*)$ ]]
-          APP_NAME="${BASH_REMATCH[1]}"
-          APP_VERSION="${BASH_REMATCH[2]}"
+          DB_NAME="${BASH_REMATCH[1]}"
+          DB_SZ_VERSION="${BASH_REMATCH[2]}"
 
-          echo $APP_NAME
-          echo $APP_VERSION
+          echo "DB_NAME=$DB_NAME"
+          echo "DB_SZ_VERSION=$DB_SZ_VERSION"
+
+          IMAGE_BASE="$DB_NAME-db:$DB_SZ_VERSION"
+          echo "OK_IMAGE=${{ env.ACR }}/mpsv/maruska/images/sz/${IMAGE_BASE}"
+          echo "MPSV_IMAGE=${{ env.MPSV_ACR }}/mpsv/maruska/images/sz/${IMAGE_BASE}"
