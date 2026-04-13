@@ -14,3 +14,9 @@ jobs:
       - name: Run git tag action
         run: |
           echo "running action on tag: ${{ github.ref }}"
+          [[ "${{ github.ref_name }}" =~ ^sz/(.*)/db/(.*)$ ]]
+          APP_NAME="${BASH_REMATCH[1]}"
+          APP_VERSION="${BASH_REMATCH[2]}"
+
+          echo $APP_NAME
+          echo $APP_VERSION
